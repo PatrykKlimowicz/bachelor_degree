@@ -1,5 +1,5 @@
-import { SERVER_URL } from "./config.js"
-import { getJSON } from "./helpers.js";
+import { SERVER_URL } from "./config.js";
+import { AJAX } from "./helper.js";
 
 export const state = {
     led: 0,
@@ -8,19 +8,18 @@ export const state = {
 
 export const setLedMode = async function (newMode) {
     try {
-        // code for setting led mode 
-        throw(new Error("this is my error message"));
+        const data = await AJAX(`${SERVER_URL}led-mode/${newMode}`);
+        state.led = data.mode;
     } catch (error) {
-        throw(new Error("this is my error message"));
+        throw error;
     }
 };
 
 export const getRandomSequence = async function (lenght) {
     try {
-        // get random sequence
-        throw(new Error("this is my error message"));
+        const data = await AJAX(`${SERVER_URL}random-sequence/${lenght}`);
+        state.randomSequence = data.random;
     } catch (error) {
-        throw(new Error("this is my error message"));
-        
+        throw error;
     }
 };

@@ -1,0 +1,10 @@
+[Unit]
+Description=serverapp
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/serverapp
+
+[Install]
+WantedBy=multi-user.target

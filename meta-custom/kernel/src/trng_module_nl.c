@@ -27,7 +27,6 @@ uint8_t trng_module_nl_get_seq_num(struct genl_info *info)
 
 	number_of_elements = (ARRAY_SIZE(seq_pool) / sizeof(seq_pool[0]));
 
-
 	for (i = 0; i < number_of_elements; ++i) {
 		if (seq_pool[i].seq == -1) {
 			seq_pool[i].seq = i;
@@ -43,7 +42,6 @@ uint8_t trng_module_nl_get_seq_num(struct genl_info *info)
 Msg trng_module_nl_process_msg(struct sk_buff *skb,
 							struct genl_info *info)
 {
-
 	Msg message = {-1, -1, -1, -1, NULL};
 
 	if (info->attrs[ATTR_CTRL_WORD_ID])
@@ -52,6 +50,8 @@ Msg trng_module_nl_process_msg(struct sk_buff *skb,
 	if (info->attrs[ATTR_WORDS]) {
 		message.data = nla_data(info->attrs[ATTR_WORDS]);
 		message.length = ((nla_len(info->attrs[ATTR_WORDS]) / 4) + 1);
+
+		printk(KERN_INFO "What I received: %d.\n", (char *)message.data);
 	} else {
 		message.data = NULL;
 		message.length = 1;
@@ -69,6 +69,9 @@ struct genl_info *info, struct genl_family *gen_net_app_family)
 	struct sk_buff *new_skb;
 	void *data = NULL;
 	int ret = 0;
+	
+	printk(KERN_INFO "KM SEND: %s\n", payload);
+	printk(KERN_INFO "KM SEND SIZE: %d\n", payload_size);
 
 	new_skb = genlmsg_new(GENLMSG_DEFAULT_SIZE, GFP_KERNEL);
 	if (!new_skb)

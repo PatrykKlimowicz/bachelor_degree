@@ -3,20 +3,13 @@ class LEDView {
     _infoArea = document.querySelector(".led-info");
     _errorMsg = "Something went wrong";
 
-    _getRadiodata() {
-        console.log(this._form);
-        const data = new FormData(this._form);
-        console.log(data);
-        return data;
-    }
-
     addHandlerMode(handler) {
         this._form.addEventListener("submit", function (e) {
             e.preventDefault();
             const dataArr = [...new FormData(this)];
             const data = Object.fromEntries(dataArr);
 
-            if (!+data.ledMode) return;
+            if (!+data.ledMode && +data.ledMode !== 0) return;
 
             handler(+data.ledMode);
         });

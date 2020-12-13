@@ -33,6 +33,6 @@ enum
 #define GET_LED_MODE 0x04
 #define TEST_SET_RANDOM_MODE 0x70
 #define TEST_SET_RANDOM_PATTERN 0x71
-#define FAMILY_NAME "embedded_c"
+#define FAMILY_NAME "bachelor_degree"
 
 #endif // __TRNG_MODULE_SHARED_NL_H__

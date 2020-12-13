@@ -21,7 +21,6 @@
 
 int main(int argc, char **argv)
 {
-
 	int flags = 0;
 	struct trng_nl_command cmd;
 
@@ -51,6 +50,7 @@ int main(int argc, char **argv)
 		else {
 			if (flags & PRINT_FLAG && res != NULL)
 				trng_nl_print_response(res);
+
 			free(res->msg);
 			free(res);
 		}
@@ -58,8 +58,6 @@ int main(int argc, char **argv)
 		if (cmd.words != NULL)
 			free(cmd.words);
 	}
-
-
 
 	return 0;
 }

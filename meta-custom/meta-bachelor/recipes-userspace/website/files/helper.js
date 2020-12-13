@@ -8,15 +8,12 @@ const timeout = function (s) {
     });
 };
 
-export const AJAX = async function (url, uploadData = undefined) {
+export const AJAX = async function (url, isPost = false) {
     try {
-        const fetchPromise = uploadData
+        const fetchPromise = isPost
             ? fetch(url, {
                   method: "POST",
-                  headers: {
-                      "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(uploadData),
+                  mode: 'cors',
               })
             : fetch(url);
 

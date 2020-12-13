@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <functional>
-#include "Server.h"
+#include "Server.hpp"
 
 int main(int argc, char **argv)
 {

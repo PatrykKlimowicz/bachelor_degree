@@ -23,5 +23,3 @@ SRC_URI = " \
 "
 
 S = "${WORKDIR}"
-
-KERNEL_MODULE_AUTOLOAD += "trng_module"

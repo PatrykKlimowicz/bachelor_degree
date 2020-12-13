@@ -81,9 +81,10 @@ void trng_module_sim_receive(Msg *msg, void *buf)
 				msg->data = (void *)response_to_user;
 				msg->length = strlen(response_to_user);
 			} else {
+				printk(KERN_INFO "Length in generate_rand is: %d", length);
 				generate_random(buf, length);
 				((char *)buf)[length] = '\0';
-				msg->data = (buf);
+				msg->data = buf;
 				msg->length = length;
 			}
 		} else {

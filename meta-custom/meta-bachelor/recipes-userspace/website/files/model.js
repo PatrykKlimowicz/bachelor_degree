@@ -8,8 +8,9 @@ export const state = {
 
 export const setLedMode = async function (newMode) {
     try {
-        const data = await AJAX(`${SERVER_URL}led-mode/${newMode}`);
-        state.led = data.mode;
+        const data = await AJAX(`${SERVER_URL}led-mode/${newMode}`, true);
+        console.log(data);
+        state.led = +data.ledMode;
     } catch (error) {
         throw error;
     }
@@ -17,7 +18,8 @@ export const setLedMode = async function (newMode) {
 
 export const getRandomSequence = async function (lenght) {
     try {
-        const data = await AJAX(`${SERVER_URL}random-sequence/${lenght}`);
+        const data = await AJAX(`${SERVER_URL}random/${lenght}`);
+        console.log(data);
         state.randomSequence = data.random;
     } catch (error) {
         throw error;

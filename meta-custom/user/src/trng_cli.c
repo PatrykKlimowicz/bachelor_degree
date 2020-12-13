@@ -61,8 +61,8 @@ int *flags, struct trng_nl_command *cmd)
 
 					/* validating data */
 					if (cmd->id == GET_RANDOM &&
-						word >= 256) {
-						printf("Max number of random bytes is 255\n");
+						(word >= 256 || word < 1)) {
+						printf("Max number of random bytes is 255. Minimum is 1\n");
 						free(cmd->words);
 						return -1;
 					} else if (cmd->id == SET_LED_MODE &&

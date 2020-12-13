@@ -99,7 +99,7 @@ static int supervisor(struct sk_buff *skb, struct genl_info *info)
 		if (receive) {
 			unsigned char buf[BUF_LEN] = {0};
 			(receive)(&message, (void *)buf);
-
+			printk(KERN_INFO "SENDING RESPONSE.\n");
 			trng_module_nl_send_response(message.data,
 				message.length, info, &gen_net_app_family);
 
